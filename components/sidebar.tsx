@@ -89,7 +89,9 @@ export function MobileSidebar(){
                                     buttonVariants({
                                         variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem"
                                     })
-                                }>
+                                }
+                                onClick={() => setOpen((prev) => !prev)}
+                                >
                                     <route.icon size={20} />
                                     {route.label}
                                 </Link>
