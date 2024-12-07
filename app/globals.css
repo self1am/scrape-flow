@@ -87,8 +87,10 @@
   background: transparent !important;
 }
 
-.dark {
-  .react-flow__controls-button {
-    @apply !bg-accent;
+@layer utilities {
+  .dark {
+    & .react-flow__controls-button {
+      @apply !bg-accent;
+    }
   }
 }
