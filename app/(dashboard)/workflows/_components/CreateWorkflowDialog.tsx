@@ -3,7 +3,7 @@
 import CustomDialogHeader from '@/components/CustomDialogHeader';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { createWorkflowScema } from '@/schema/workflow';
+import { createWorkflowSchema, createWorkflowSchemaType } from '@/schema/workflow';
 import { Layers2Icon } from 'lucide-react';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
@@ -24,8 +24,8 @@ import { Textarea } from '@/components/ui/textarea';
 function CreateWorkflowDialog({triggerText} : {triggerText?: string}) {
     const [open, setOpen] = useState(false);
 
-    const form = useForm<z.infer<typeof createWorkflowScema>>({
-        resolver: zodResolver(createWorkflowScema),
+    const form = useForm<createWorkflowSchemaType>({
+        resolver: zodResolver(createWorkflowSchema),
         defaultValues: {},
     });
 
