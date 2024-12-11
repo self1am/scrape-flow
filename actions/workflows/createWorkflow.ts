@@ -22,10 +22,8 @@ export async function createWorkflow(form: createWorkflowSchemaType) {
       data: {
         userId,
         name: data.name,
-        // Provide a default description if not provided
         description: data.description || "",
         status: workflowStatus.DRAFT,
-        // Ensure definition is provided as it's required
         definition: "TODO",
       },
     });
