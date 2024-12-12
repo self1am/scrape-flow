@@ -17,7 +17,7 @@ function WorkflowCard({workflow} : {workflow : workflow}) {
     const isDraft = workflow.status === workflowStatus.DRAFT;
   return (
     <Card className='border border-separate shadow-sm rounded-1g overflow-hidden 
-        hover:shadow-md dark:shadow-primary/30'>
+        hover:shadow-md dark:shadow-primary/20 cursor-pointer'>
             <CardContent className='p-4 flex items-center justify-between h-[100px]'>
                 <div className={cn('w-10 h-10 rounded-full flex items-center justify-center',
                     statusColors[workflow.status as workflowStatus]
@@ -38,4 +38,4 @@ function WorkflowCard({workflow} : {workflow : workflow}) {
   )
 }
 
-export default WorkflowCard
+export default WorkflowCard;
