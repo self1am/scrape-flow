@@ -1,10 +1,19 @@
 "use client";
 
+import TooltipWrapper from '@/components/TooltipWrapper';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { 
+    DropdownMenu, 
+    DropdownMenuContent,
+    DropdownMenuTrigger,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+ } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { workflowStatus } from '@/types/workflow';
 import { workflow } from '@prisma/client';
-import { FileTextIcon, PlayIcon } from 'lucide-react';
+import { FileTextIcon, MoreVerticalIcon, PlayIcon, ShuffleIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 
@@ -41,9 +50,41 @@ function WorkflowCard({workflow} : {workflow : workflow}) {
                         </h3>
                     </div>
                 </div>
+                <div className="flex items-center space-x-2">
+                    <Link href={`/workflow/editor/{workflow.id}`}
+                        className={cn(
+                            buttonVariants({
+                                variant: 'outline',
+                                size: 'sm',
+                            }),
+                            'flex items-center gap-2'
+                        )}
+                    >
+                        <ShuffleIcon size={16} />
+                        Edit
+                    </Link>
+                    <WorkflowActions />
+                </div>
             </CardContent>
     </Card>
   )
+}
+
+function WorkflowActions() {
+    return(
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant={'outline'} size={'sm'}>
+                    <TooltipWrapper content={'More Actions'}>
+                        <MoreVerticalIcon size={18} />
+                    </TooltipWrapper>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end'>
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
 }
 
 export default WorkflowCard;
