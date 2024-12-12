@@ -9,29 +9,37 @@ import Link from 'next/link';
 import React from 'react'
 
 const statusColors = {
-    [workflowStatus.PUBLISHED]: 'text-gray-500',
-    [workflowStatus.DRAFT]: 'text-orange-500',
+    [workflowStatus.PUBLISHED]: 'bg-yellow-400 text-yellow-600',
+    [workflowStatus.DRAFT]: 'bg-primary',
 };
 
 function WorkflowCard({workflow} : {workflow : workflow}) {
     const isDraft = workflow.status === workflowStatus.DRAFT;
   return (
-    <Card className='border border-separate shadow-sm rounded-1g overflow-hidden 
+    <Card className='border border-separate shadow-sm rounded-lg overflow-hidden 
         hover:shadow-md dark:shadow-primary/20 cursor-pointer'>
             <CardContent className='p-4 flex items-center justify-between h-[100px]'>
-                <div className={cn('w-10 h-10 rounded-full flex items-center justify-center',
-                    statusColors[workflow.status as workflowStatus]
-                )}>
-                    {isDraft ? (
-                        <FileTextIcon className='h-5 w-5' />
-                     ) : (
-                        <PlayIcon className='h-5 w-5 text-green-500'/>
-                    )}
-                </div>
-                <div className="">
-                    <h3 className="text-base font-bold text-muted-foreground flex items-center">
-                        <Link href={`workflow/editor/{workflow.id}`}></Link>
-                    </h3>
+                <div className='flex items-center justify-end space-x-3'>
+                    <div className={cn(
+                        'w-10 h-10 rounded-full flex items-center justify-center',
+                        statusColors[workflow.status as workflowStatus]
+                    )}>
+                        {isDraft ? (
+                            <FileTextIcon className='h-5 w-5' />
+                         ) : (
+                            <PlayIcon className='h-5 w-5 text-white'/>
+                        )}
+                    </div>
+                    <div className="">
+                        <h3 className="text-base font-bold text-muted-foreground flex items-center">
+                            <Link href={`/workflow/editor/{workflow.id}`}>
+                                {workflow.name}
+                            </Link>
+                            {isDraft &&
+                            <span className="ml-2 px-2 text-sm text-gray-500 bg-yellow-100 rounded-full">Draft</span>
+                            }
+                        </h3>
+                    </div>
                 </div>
             </CardContent>
     </Card>
