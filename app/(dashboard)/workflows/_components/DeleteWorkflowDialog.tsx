@@ -59,7 +59,9 @@ function DeleteWorkflowDialog({open, setOpen, workflowname, workflowId} : Props)
                     </div>
                 </AlertDialogDescription>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel onClick={() => setConfirmText("")}>
+                        Cancel
+                    </AlertDialogCancel>
                     <AlertDialogAction disabled={confirmText !== workflowname || deleteMutation.isPending}
                         className='bg-destructive text-destructive-foreground hover:bg-destructive/90'
                         onClick={(e) => {
