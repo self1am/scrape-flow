@@ -43,7 +43,7 @@ function WorkflowCard({workflow} : {workflow : workflow}) {
                     </div>
                     <div className="">
                         <h3 className="text-base font-bold text-muted-foreground flex items-center">
-                            <Link href={`/workflow/editor/{workflow.id}`}>
+                            <Link href={`/workflow/editor/${workflow.id}`}>
                                 {workflow.name}
                             </Link>
                             {isDraft &&
@@ -53,7 +53,7 @@ function WorkflowCard({workflow} : {workflow : workflow}) {
                     </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                    <Link href={`/workflow/editor/{workflow.id}`}
+                    <Link href={`/workflow/editor/${workflow.id}`}
                         className={cn(
                             buttonVariants({
                                 variant: 'outline',
