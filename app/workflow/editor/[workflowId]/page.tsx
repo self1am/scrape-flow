@@ -1,3 +1,4 @@
+import { waitFor } from '@/lib/helper/waitFor';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
 import React from 'react'
@@ -9,6 +10,8 @@ async function page({params}: {params: {workflowId: string}}) {
     if(!userId){
         return(<div>Not authenticated. Sign In.</div>)
     }
+
+    await waitFor(5000);
 
     const workflow = await prisma.workflow.findUnique({
         where: {
