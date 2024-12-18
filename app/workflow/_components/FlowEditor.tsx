@@ -1,5 +1,5 @@
 import { workflow } from '@prisma/client'
-import { Controls, ReactFlow, useEdgesState, useNodesState } from '@xyflow/react'
+import { Background, BackgroundVariant, Controls, ReactFlow, useEdgesState, useNodesState } from '@xyflow/react'
 import "@xyflow/react/dist/style.css"
 
 function FlowEditor({workflow}: {workflow: workflow}) {
@@ -14,6 +14,7 @@ function FlowEditor({workflow}: {workflow: workflow}) {
             onEdgesChange={onEdgesChange}
         >
             <Controls position='top-left' />
+            <Background variant={BackgroundVariant.Dots} />
         </ReactFlow>
     </main>
   )
