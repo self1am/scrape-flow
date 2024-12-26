@@ -3,6 +3,12 @@ import { TaskType } from '@/types/task';
 import { workflow } from '@prisma/client'
 import { Background, BackgroundVariant, Controls, ReactFlow, useEdgesState, useNodesState } from '@xyflow/react'
 import "@xyflow/react/dist/style.css"
+import NodeComponent from './nodes/NodeComponent';
+
+const nodeTypes = {
+  FlowScrapeNode: NodeComponent,
+
+}
 
 function FlowEditor({workflow}: {workflow: workflow}) {
     const [nodes, setNodes, onNodesChange] = useNodesState([
@@ -16,6 +22,7 @@ function FlowEditor({workflow}: {workflow: workflow}) {
             edges={edges}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
+            nodeTypes={nodeTypes}
         >
             <Controls position='top-left' />
             <Background variant={BackgroundVariant.Dots} />
