@@ -8,7 +8,10 @@ import NodeComponent from './nodes/NodeComponent';
 const nodeTypes = {
   FlowScrapeNode: NodeComponent,
 
-}
+};
+
+const snapGrid: [ number, number ] = [ 20, 20 ];
+const fitViewOptions = { padding: 1, zoom: 1 };
 
 function FlowEditor({workflow}: {workflow: workflow}) {
     const [nodes, setNodes, onNodesChange] = useNodesState([
@@ -23,6 +26,10 @@ function FlowEditor({workflow}: {workflow: workflow}) {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             nodeTypes={nodeTypes}
+            snapToGrid
+            snapGrid={snapGrid}
+            fitView
+            fitViewOptions={fitViewOptions}
         >
             <Controls position='top-left' />
             <Background variant={BackgroundVariant.Dots} />
